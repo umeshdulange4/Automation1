@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js && node report.js",
-    "test:smoke": "cucumber-js --tags @smoke && node report.js",
+    "test:smoke": "cucumber-js --profile smoke && node report.js",
+    "test:regression": "cucumber-js --profile regression && node report.js",
+    "test:ci": "cucumber-js --profile ci && node report.js",
+    "test:debug": "cucumber-js --profile debug && node report.js",
     "test:report": "node report.js"
   },
   "repository": {

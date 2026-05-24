@@ -15,3 +15,10 @@ Feature: Homepage Functionality
         When User clicks on Pricing Menu
 
         Then It should Display correct Product lists in left Nav
+
+    @homepage
+    Scenario: verify the homepage links
+    When  User navigates to growNow homepage
+    Then User verify links are visible on the homepage
+    
+    
