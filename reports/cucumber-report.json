@@ -1,0 +1,92 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;verify-login-feature",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Verify Login feature",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4844161199
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2317274699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "User navigates to URL",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 457014900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "User enters credentials",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 878906300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "home page should be displayed",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 46816800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1271015799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 2
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Login Functionality",
+    "tags": [],
+    "uri": "tests\\features\\Login.feature"
+  }
+]

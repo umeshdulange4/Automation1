@@ -1,0 +1,316 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;verify-login-feature",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Verify Login feature",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2284329400
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1752200200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "User navigates to URL",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3182766599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "User enters credentials",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 660302499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "home page should be displayed",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 948387999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 770763699
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 493411299
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2733500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke1",
+            "line": 2
+          },
+          {
+            "name": "@smoke",
+            "line": 4
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;verify-login-feature-with-invalid-email",
+        "keyword": "Scenario Outline",
+        "line": 20,
+        "name": "Verify Login feature with invalid Email",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1601336900
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1677796900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "User navigates to URL",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3766966899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "User enters incorrect \"Umesh1990@gmail.com\" and correct \"2uEDqMFqvk\"",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 615532199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "User should get warning to enter correct Email",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 180780999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 674811300
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 645461800
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 736799
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke1",
+            "line": 2
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;verify-login-feature-with-invalid-email",
+        "keyword": "Scenario Outline",
+        "line": 21,
+        "name": "Verify Login feature with invalid Email",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6425081799
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1769324199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 14,
+            "name": "User navigates to URL",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2837835900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "User enters incorrect \"Umeshdulange4@gmail.com\" and correct \"2uEuqMFqvk\"",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:41"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 548302199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "User should get warning to enter correct Email",
+            "match": {
+              "location": "tests\\steps\\Login.steps.js:54"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5030748000,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.Toastify__toast')\nExpected: \u001b[32m\"Invalid author credentials\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"to.have.text\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.Toastify__toast')\u001b[22m\n\u001b[2m    - locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in=\"true\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error Toastify--animate Toastify__bounce-enter--bottom-right\">…</div>\u001b[22m\n\u001b[2m    2 × unexpected value \"Invalid password!\"\u001b[22m\n\u001b[2m      - locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in=\"true\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error\">…</div>\u001b[22m\n\u001b[2m    - unexpected value \"Invalid password!\"\u001b[22m\n\u001b[2m    - locator resolved to <div id=\"1\" tabindex=\"0\" data-in=\"false\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error Toastify--animate Toastify__bounce-exit--bottom-right\">…</div>\u001b[22m\n\u001b[2m    - unexpected value \"Invalid password!\"\u001b[22m\n\n    at Proxy.<anonymous> (F:\\Automation\\Automation1\\node_modules\\playwright\\lib\\matchers\\expect.js:213:24)\n    at World.<anonymous> (F:\\Automation\\Automation1\\tests\\steps\\Login.steps.js:57:48)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 646848999
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 508582699
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 876400
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke1",
+            "line": 2
+          },
+          {
+            "name": "@smoke",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 3,
+    "keyword": "Feature",
+    "name": "Login Functionality",
+    "tags": [
+      {
+        "name": "@smoke1",
+        "line": 2
+      }
+    ],
+    "uri": "tests\\features\\Login.feature"
+  }
+]
