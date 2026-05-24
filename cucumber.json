@@ -10,7 +10,9 @@
 
         "require": [
 
-            "tests/steps/*.js"
+            "tests/steps/*.js",
+            "tests/support/*.js"
+            
 
         ],
 
@@ -26,7 +28,7 @@
 
                 "html",
 
-                "cucumber-report.html"
+                "reports/cucumber-report.html"
 
             ],
 
@@ -34,7 +36,7 @@
 
             "progress-bar",
 
-            "json:./cucumber-report.json"
+            "json:./reports/cucumber-report.json"
 
         ]
 

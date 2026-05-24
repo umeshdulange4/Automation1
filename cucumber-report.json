@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2284329400
+              "duration": 3742203400
             }
           },
           {
@@ -22,7 +22,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1752200200
+              "duration": 2782711500
             }
           },
           {
@@ -31,11 +31,11 @@
             "line": 7,
             "name": "User navigates to URL",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:21"
+              "location": "tests\\steps\\Login.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 3182766599
+              "duration": 1540632599
             }
           },
           {
@@ -44,11 +44,11 @@
             "line": 8,
             "name": "User enters credentials",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:27"
+              "location": "tests\\steps\\Login.steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 660302499
+              "duration": 352563299
             }
           },
           {
@@ -57,11 +57,11 @@
             "line": 9,
             "name": "home page should be displayed",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:35"
+              "location": "tests\\steps\\Login.steps.js:21"
             },
             "result": {
               "status": "passed",
-              "duration": 948387999
+              "duration": 929765999
             }
           },
           {
@@ -69,7 +69,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 770763699
+              "duration": 22705099
             }
           },
           {
@@ -77,15 +77,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 493411299
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 2733500
+              "duration": 558797800
             }
           }
         ],
@@ -113,7 +105,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1601336900
+              "duration": 1627859099
             }
           },
           {
@@ -121,7 +113,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1677796900
+              "duration": 931723299
             }
           },
           {
@@ -130,11 +122,11 @@
             "line": 14,
             "name": "User navigates to URL",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:21"
+              "location": "tests\\steps\\Login.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 3766966899
+              "duration": 818957899
             }
           },
           {
@@ -143,11 +135,11 @@
             "line": 15,
             "name": "User enters incorrect \"Umesh1990@gmail.com\" and correct \"2uEDqMFqvk\"",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:41"
+              "location": "tests\\steps\\Login.steps.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 615532199
+              "duration": 417274400
             }
           },
           {
@@ -156,11 +148,11 @@
             "line": 16,
             "name": "User should get warning to enter correct Email",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:54"
+              "location": "tests\\steps\\Login.steps.js:35"
             },
             "result": {
               "status": "passed",
-              "duration": 180780999
+              "duration": 381590299
             }
           },
           {
@@ -168,7 +160,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 674811300
+              "duration": 59120500
             }
           },
           {
@@ -176,15 +168,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 645461800
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 736799
+              "duration": 720235099
             }
           }
         ],
@@ -212,7 +196,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 6425081799
+              "duration": 1943468499
             }
           },
           {
@@ -220,7 +204,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1769324199
+              "duration": 1024694900
             }
           },
           {
@@ -229,11 +213,11 @@
             "line": 14,
             "name": "User navigates to URL",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:21"
+              "location": "tests\\steps\\Login.steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 2837835900
+              "duration": 940946299
             }
           },
           {
@@ -242,11 +226,11 @@
             "line": 15,
             "name": "User enters incorrect \"Umeshdulange4@gmail.com\" and correct \"2uEuqMFqvk\"",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:41"
+              "location": "tests\\steps\\Login.steps.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 548302199
+              "duration": 459514299
             }
           },
           {
@@ -255,12 +239,11 @@
             "line": 16,
             "name": "User should get warning to enter correct Email",
             "match": {
-              "location": "tests\\steps\\Login.steps.js:54"
+              "location": "tests\\steps\\Login.steps.js:35"
             },
             "result": {
-              "status": "failed",
-              "duration": 5030748000,
-              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.Toastify__toast')\nExpected: \u001b[32m\"Invalid author credentials\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"to.have.text\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.Toastify__toast')\u001b[22m\n\u001b[2m    - locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in=\"true\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error Toastify--animate Toastify__bounce-enter--bottom-right\">…</div>\u001b[22m\n\u001b[2m    2 × unexpected value \"Invalid password!\"\u001b[22m\n\u001b[2m      - locator resolved to <div id=\"1\" tabindex=\"0\" role=\"alert\" data-in=\"true\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error\">…</div>\u001b[22m\n\u001b[2m    - unexpected value \"Invalid password!\"\u001b[22m\n\u001b[2m    - locator resolved to <div id=\"1\" tabindex=\"0\" data-in=\"false\" class=\"Toastify__toast Toastify__toast-theme--light Toastify__toast--error Toastify--animate Toastify__bounce-exit--bottom-right\">…</div>\u001b[22m\n\u001b[2m    - unexpected value \"Invalid password!\"\u001b[22m\n\n    at Proxy.<anonymous> (F:\\Automation\\Automation1\\node_modules\\playwright\\lib\\matchers\\expect.js:213:24)\n    at World.<anonymous> (F:\\Automation\\Automation1\\tests\\steps\\Login.steps.js:57:48)"
+              "status": "passed",
+              "duration": 414946800
             }
           },
           {
@@ -268,7 +251,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 646848999
+              "duration": 35086500
             }
           },
           {
@@ -276,15 +259,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 508582699
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 876400
+              "duration": 547032199
             }
           }
         ],

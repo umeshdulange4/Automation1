@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Automation framework for demo website",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cucumber-js && node report.js",
+    "test:smoke": "cucumber-js --tags @smoke && node report.js",
+    "test:report": "node report.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/umeshdulange4/Automation1.git"
@@ -28,6 +32,7 @@
     "prettier": "3.3.2"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^12.8.1"
+    "@cucumber/cucumber": "^12.8.1",
+    "open": "^11.0.0"
   }
 }

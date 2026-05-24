@@ -1,12 +1,12 @@
 // hooks.js
-const { Given } = require('@cucumber/cucumber');
+const { Given, BeforeAll, AfterAll, Before, After } = require('@cucumber/cucumber');
 const { chromium } = require('@playwright/test');
 
 let browser;
 
 BeforeAll(async function () {
   // Launch once before all scenarios
-  browser = await chromium.launch({ headless: true });
+  browser = await chromium.launch({ headless: false });
 });
 
 AfterAll(async function () {

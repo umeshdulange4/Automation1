@@ -1,78 +1,83 @@
-//Login Page:
- locators = {
-   "username_input": "#email",
-   "password_input": "#password",
-   "login_button": "#login-button",
-   "Login-button":"getByRole('button', { name: 'Login' })",
-   "inventory_container": "#inventory_container",
-   "error" : "[data-test=\"error\"]"
- }
- 
- class LoginPage {
+const { expect } = require("@playwright/test");
+const { takeScreenshot } = require("../tests/support/screenshot.helper");
+const { APP_URL, testData } = require("../tests/config/testData");
 
-  async navigateToLoginScreen() {
-   return await page.goto(global.BASE_URL);
-  }
-
-  async verifyLoginPageIsDisplayed() {
-   return expect(await page.title()).to.equal('Swag Labs');
-  }
-
-  async submitLoginForm() {
-    const element = await page.waitForSelector(locators.username_input);
-    await page.fill(locators.username_input,'standard_user');
-    await page.fill(locators.password_input,'secret_sauce');
-    await page.click(locators.login_button);
-  }
-
-
-  async submitLoginFormWrongUserCred() {
-    const element = await page.waitForSelector(locators.username_input);
-    await page.fill(locators.username_input,'7656787654');
-    await page.fill(locators.password_input,'76545678876');
-    await page.click(locators.login_button);
-  }
-
-  async submitLoginFormUsingEmptyCred() {
-    const element = await page.waitForSelector(locators.username_input);
-    await page.fill(locators.username_input,'');
-    await page.fill(locators.password_input,'');
-    await page.click(locators.login_button);
-  }
-
-  async submitLoginFormUsingVaildUserButWrongPassword() {
-    const element = await page.waitForSelector(locators.username_input);
-    await page.fill(locators.username_input,'standard_user');
-    await page.fill(locators.password_input,'weverve');
-    await page.click(locators.login_button);
-  }
-
-  async submitLoginFormUsingWrongUserVaildPassword() {
-    const element = await page.waitForSelector(locators.username_input);
-    await page.fill(locators.username_input,'frebrerb43');
-    await page.fill(locators.password_input,'secret_sauce');
-    await page.click(locators.login_button);
-  }
-
-  async verifyAfterLoginPage() {
-    await page.waitForSelector(locators.inventory_container);
-    const visible = await page.isVisible(locators.inventory_container);
-    return expect(visible).to.equal(true);
-  }
-
-  async verifyErrorMsg(error) {
-    await page.waitForSelector(locators.error);
-    const errorMsg = await page.locator(locators.error).innerText();
-    return expect(errorMsg.includes(error)).to.equal(true, `was looking text : ${error} but did not find it. found text ${errorMsg}`);
+class LoginPage {
+  constructor(page, context) {
+    this.page = page;
+    this.context = context;
     
+    // Locators
+    this.emailInput = () => this.page.getByLabel('Email Address');
+    this.passwordInput = () => this.page.getByLabel('Password');
+    this.loginButton = () => this.page.getByRole('button', { name: 'Login' });
+    this.errorToast = () => this.page.locator('.Toastify__toast--error');
+    this.welcomeMessage = () => this.page.getByText('Welcome to Grow Now');
+  }
 
+  // Navigation Methods
+  async navigateToLoginPage() {
+    await this.page.goto(APP_URL, { waitUntil: 'networkidle' });
+    await this.page.waitForLoadState('domcontentloaded');
+    await takeScreenshot(this.page, this.context, '01-login-page-loaded');
+  }
+
+  // Input Methods
+  async enterEmail(email) {
+    await this.emailInput().fill(email);
+  }
+
+  async enterPassword(password) {
+    await this.passwordInput().fill(password);
+  }
+
+  async enterCredentials(email, password) {
+    await this.enterEmail(email);
+    await this.enterPassword(password);
+    await takeScreenshot(this.page, this.context, '02-credentials-entered');
+  }
+
+  async clickLoginButton() {
+    await this.loginButton().click();
+    await this.page.waitForLoadState('networkidle');
+    await takeScreenshot(this.page, this.context, '03-login-clicked');
+  }
+
+  // Login Methods
+  async loginWithValidCredentials() {
+    const { email, password } = testData.validCredentials;
+    await this.enterCredentials(email, password);
+    await this.clickLoginButton();
+  }
+
+  async loginWithInvalidCredentials(email, password) {
+    await this.enterCredentials(email, password);
+    await this.clickLoginButton();
+  }
+
+  // Assertion Methods
+  async assertHomePageIsDisplayed() {
+    await expect(this.page).toHaveURL(/.*live/);
+    await expect(this.welcomeMessage()).toBeVisible();
+    await takeScreenshot(this.page, this.context, '04-home-page-displayed');
+  }
+
+  async assertErrorMessageIsDisplayed() {
+    const flashMessage = this.errorToast();
     
- }
+    await flashMessage.waitFor({ state: 'visible' });
+    await expect(flashMessage).toBeVisible();
+    await takeScreenshot(this.page, this.context, '04-error-message-displayed');
 
+    const messageText = await flashMessage.textContent();
+    expect(messageText).toMatch(/Invalid author credentials|Invalid password!/);
+  }
 
- 
-
+  async getErrorMessage() {
+    const flashMessage = this.errorToast();
+    await flashMessage.waitFor({ state: 'visible' });
+    return await flashMessage.textContent();
+  }
 }
 
-
-module.exports = { LoginPage };
+module.exports = LoginPage;
