@@ -3,6 +3,7 @@ const { expect } = require("@playwright/test");
 const { takeScreenshot } = require("../tests/support/screenshot.helper");
 const { APP_URL, testData } = require("../tests/config/testData");
 const LoginPage = require("./Login.page");
+const CommonPage = require("./common.page");
 
 const locators = {
    "dashboard_link":"#dashboard",
@@ -18,6 +19,7 @@ const locators = {
  class HomePage extends LoginPage {
   constructor(page, context) {
     super(page, context);
+    this.common = new CommonPage(this.page);
   }
   //navigateToHomePage
    async navigateToHomePage() {
@@ -25,6 +27,7 @@ const locators = {
     const { email, password } = testData.validCredentials;
     await this.enterCredentials(email, password);
     await this.clickLoginButton();
+    console.log("Navigated to Home Page");
   }
 
   async verifyLinksOnHomePage() {
@@ -39,6 +42,11 @@ const locators = {
     const storefrontLinkVisible = await this.page.isVisible(locators.storefront_link);
     const settingsLinkVisible = await this.page.isVisible(locators.settings_link);
     return expect(dashboardLinkVisible && analyticsLinkVisible && coursesLinkVisible && liveWorkshopsLinkVisible && servicesLinkVisible && couponsLinkVisible && storefrontLinkVisible && settingsLinkVisible).toBeTruthy();
+    console.log("All links on Home Page are visible");
+  }
+
+  async ValidateElementText(selector, expected) {
+    return this.common.ValidateElementText(selector, expected);
   }
 
 }

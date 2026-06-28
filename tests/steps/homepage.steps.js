@@ -2,6 +2,7 @@ const { Given, When, Then, setDefaultTimeout } = require("@cucumber/cucumber");
 const { expect } = require("@playwright/test");
 const { takeScreenshot } = require("../support/screenshot.helper");
 const { HomePage }= require("../../page objects/Homepage.page");
+const CommonPage = require("../../page objects/common.page");
 
 
 setDefaultTimeout(60 * 1000);
@@ -26,7 +27,9 @@ Then('It should show Web Testing Product', async function () {
 
     await this.page.locator('div[aria-label="Products"] button[title="Web Testing"]').waitFor();
 
-    expect(await this.page.locator('div[aria-label="Products"] button[title="Web Testing"] span').isVisible()).toBeTruthy()
+    // Validate the displayed product text
+    const common = new CommonPage(this.page);
+    await common.ValidateElementText('div[aria-label="Products"] button[title="Web Testing"] span', 'Web Testing');
     await takeScreenshot(this.page, this, '03-web-testing-shown');
 
 });
@@ -51,7 +54,10 @@ Then('It should Display correct Product lists in left Nav', async function () {
 
     var productArray = await leftNavProducts.split("\n").map((item) => { return item.trim(); });
 
-    expect(productArray).toEqual(expect.arrayContaining(['Live', 'App Live']));
+    // Validate product list contains expected items
+    const common2 = new CommonPage(this.page);
+    await common2.ValidateElementText('div[id="sidenav__list"]', /Live/);
+    await common2.ValidateElementText('div[id="sidenav__list"]', /App Live/);
     await takeScreenshot(this.page, this, '03-product-list-displayed');
 
 });

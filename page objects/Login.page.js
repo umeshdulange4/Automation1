@@ -1,11 +1,13 @@
 const { expect } = require("@playwright/test");
 const { takeScreenshot } = require("../tests/support/screenshot.helper");
 const { APP_URL, testData } = require("../tests/config/testData");
+const CommonPage = require("./common.page");
 
 class LoginPage {
   constructor(page, context) {
     this.page = page;
     this.context = context;
+    this.common = new CommonPage(this.page);
     
     // Locators
     this.emailInput = () => this.page.getByLabel('Email Address');
@@ -59,6 +61,7 @@ class LoginPage {
   async assertHomePageIsDisplayed() {
     await expect(this.page).toHaveURL(/.*live/);
     await expect(this.welcomeMessage()).toBeVisible();
+    await this.common.ValidateElementText(this.welcomeMessage(), 'Welcome to Grow Now');
     await takeScreenshot(this.page, this.context, '04-home-page-displayed');
   }
 
@@ -69,8 +72,7 @@ class LoginPage {
     await expect(flashMessage).toBeVisible();
     await takeScreenshot(this.page, this.context, '04-error-message-displayed');
 
-    const messageText = await flashMessage.textContent();
-    expect(messageText).toMatch(/Invalid author credentials|Invalid password!/);
+    await this.common.ValidateElementText(flashMessage, /Invalid author credentials|Invalid password!/);
   }
 
   async getErrorMessage() {
