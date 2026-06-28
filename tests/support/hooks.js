@@ -14,6 +14,15 @@ AfterAll(async function () {
   await browser.close();
 });
 
+process.on('exit', () => {
+  try {
+    const { generateReport } = require('../../report');
+    generateReport({ openBrowser: true });
+  } catch (error) {
+    console.error('Failed to generate report on process exit:', error.message || error);
+  }
+});
+
 Before(async function () {
   // Create a fresh context + page for each scenario
   this.context = await browser.newContext();

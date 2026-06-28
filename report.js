@@ -1,5 +1,5 @@
 const reporter = require('cucumber-html-reporter');
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -75,70 +75,85 @@ function parseCucumberSummary(jsonPath) {
   return summary;
 }
 
-const summary = parseCucumberSummary(jsonFile);
+function openChromeSync(fileUrl) {
+  const chromeExecutables = [
+    'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+  ];
 
-const options = {
-  theme: 'bootstrap',
-  jsonFile,
-  output,
-  reportSuiteAsScenarios: false,
-  scenarioTimestamp: true,
-  launchReport: false,
-  brandTitle: 'Automation1 Cucumber Dashboard',
-  name: 'Automation1 Test Report',
-  metadata: {
-    'Total Features': summary.features,
-    'Features Passed': `${summary.passedFeatures}/${summary.features}`,
-    'Features Failed': summary.failedFeatures,
-    'Total Steps': summary.totalSteps,
-    'Steps Passed': `${summary.passedSteps}/${summary.totalSteps}`,
-    'Steps Failed': summary.failedSteps,
-    'Skipped Steps': summary.skippedSteps,
-    'Platform': process.platform,
-  },
-  failedSummaryReport: true,
-};
-
-reporter.generate(options);
-
-if (!fs.existsSync(reportPath)) {
-  console.error('✗ Report file not found: ' + reportPath);
-  process.exit(1);
-}
-
-const chromeExecutables = [
-  'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-  'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
-];
-
-let opened = false;
-for (const chrome of chromeExecutables) {
-  if (fs.existsSync(chrome)) {
-    exec(`"${chrome}" --new-window "${fileUrl}"`, (error) => {
-      if (error) {
-        console.error('Error opening Chrome:', error);
+  let opened = false;
+  for (const chrome of chromeExecutables) {
+    if (fs.existsSync(chrome)) {
+      try {
+        execSync(`"${chrome}" --new-window "${fileUrl}"`, { stdio: 'ignore' });
+        console.log('✓ Report opened in Chrome: ' + reportPath);
+        opened = true;
+        break;
+      } catch (error) {
+        console.error('Error opening Chrome:', error.message || error);
       }
-    });
-    console.log('✓ Report opened in Chrome: ' + reportPath);
-    opened = true;
-    break;
+    }
+  }
+
+  if (!opened) {
+    try {
+      execSync(`start "" "chrome" "${fileUrl}"`, { shell: 'cmd.exe', stdio: 'ignore' });
+      console.log('✓ Report opened in Chrome via shell command: ' + reportPath);
+      opened = true;
+    } catch (error) {
+      try {
+        execSync(`start "" "${fileUrl}"`, { shell: 'cmd.exe', stdio: 'ignore' });
+        console.log('✓ Report opened in default browser: ' + reportPath);
+      } catch (fallbackError) {
+        console.error('Error opening report:', fallbackError.message || fallbackError);
+      }
+    }
   }
 }
 
-if (!opened) {
-  exec(`start "" "chrome" "${fileUrl}"`, { shell: 'cmd.exe' }, (error) => {
-    if (!error) {
-      console.log('✓ Report opened in Chrome via shell command: ' + reportPath);
-      opened = true;
-      return;
-    }
+function generateReport({ openBrowser = true } = {}) {
+  const summary = parseCucumberSummary(jsonFile);
 
-    exec(`start "" "${fileUrl}"`, { shell: 'cmd.exe' }, (fallbackError) => {
-      if (fallbackError) {
-        console.error('Error opening report:', fallbackError);
-        return;
-      }
-      console.log('✓ Report opened in default browser: ' + reportPath);
-    });
-  });
+  const options = {
+    theme: 'bootstrap',
+    jsonFile,
+    output,
+    reportSuiteAsScenarios: false,
+    scenarioTimestamp: true,
+    launchReport: false,
+    brandTitle: 'Automation1 Cucumber Dashboard',
+    name: 'Automation1 Test Report',
+    metadata: {
+      'Total Features': summary.features,
+      'Features Passed': `${summary.passedFeatures}/${summary.features}`,
+      'Features Failed': summary.failedFeatures,
+      'Total Steps': summary.totalSteps,
+      'Steps Passed': `${summary.passedSteps}/${summary.totalSteps}`,
+      'Steps Failed': summary.failedSteps,
+      'Skipped Steps': summary.skippedSteps,
+      'Platform': process.platform,
+    },
+    failedSummaryReport: true,
+  };
+
+  reporter.generate(options);
+
+  if (!fs.existsSync(reportPath)) {
+    throw new Error('Report file not found: ' + reportPath);
+  }
+
+  if (openBrowser) {
+    openChromeSync(fileUrl);
+  }
 }
+
+if (require.main === module) {
+  try {
+    generateReport({ openBrowser: true });
+  } catch (error) {
+    console.error(error.message || error);
+    process.exit(1);
+  }
+}
+
+module.exports = { generateReport };
