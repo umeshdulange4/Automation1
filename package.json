@@ -4,11 +4,11 @@
   "description": "Automation framework for demo website",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js && node report.js",
-    "test:smoke": "cucumber-js --profile smoke && node report.js",
-    "test:regression": "cucumber-js --profile regression && node report.js",
-    "test:ci": "cucumber-js --profile ci && node report.js",
-    "test:debug": "cucumber-js --profile debug && node report.js",
+    "test": "node run-tests.js",
+    "test:smoke": "node run-tests.js smoke",
+    "test:regression": "node run-tests.js regression",
+    "test:ci": "node run-tests.js ci",
+    "test:debug": "node run-tests.js debug",
     "test:report": "node report.js"
   },
   "repository": {

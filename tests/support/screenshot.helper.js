@@ -24,4 +24,12 @@ async function takeScreenshot(page, context, stepName) {
   console.log(`📸 Screenshot: ${fileName}`);
 }
 
-module.exports = { takeScreenshot };
+async function attachText(context, text) {
+  if (context && typeof context.attach === 'function') {
+    await context.attach(text, 'text/plain');
+  } else {
+    console.warn('Cannot attach text: missing Cucumber context attach function');
+  }
+}
+
+module.exports = { takeScreenshot, attachText };

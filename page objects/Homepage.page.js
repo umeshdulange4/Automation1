@@ -1,6 +1,6 @@
 //HomePage :
 const { expect } = require("@playwright/test");
-const { takeScreenshot } = require("../tests/support/screenshot.helper");
+const { takeScreenshot, attachText } = require("../tests/support/screenshot.helper");
 const { APP_URL, testData } = require("../tests/config/testData");
 const LoginPage = require("./Login.page");
 const CommonPage = require("./common.page");
@@ -41,8 +41,10 @@ const locators = {
     const couponsLinkVisible = await this.page.isVisible(locators.coupons_link);
     const storefrontLinkVisible = await this.page.isVisible(locators.storefront_link);
     const settingsLinkVisible = await this.page.isVisible(locators.settings_link);
-    return expect(dashboardLinkVisible && analyticsLinkVisible && coursesLinkVisible && liveWorkshopsLinkVisible && servicesLinkVisible && couponsLinkVisible && storefrontLinkVisible && settingsLinkVisible).toBeTruthy();
+    const allLinksVisible = dashboardLinkVisible && analyticsLinkVisible && coursesLinkVisible && liveWorkshopsLinkVisible && servicesLinkVisible && couponsLinkVisible && storefrontLinkVisible && settingsLinkVisible;
+    expect(allLinksVisible).toBeTruthy();
     console.log("All links on Home Page are visible");
+    await attachText(this.context, "All links on Home Page are visible");
   }
 
   async ValidateElementText(selector, expected) {
